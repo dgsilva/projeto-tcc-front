@@ -1,0 +1,53 @@
+<div class="card mb-5">
+    <div class="card-body">
+ 
+        <h5 class="card-title">Consulta de profissionais</h5>
+        <p class="card-text">Listagem de profissionais cadastrado.</p>
+ 
+        <hr />
+ 
+        
+ 
+        <table class="table table-hover table-striped table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nome:</th>
+                    <th>CPF:</th>
+                    <th>Email:</th>
+                    <th>Bairro:</th>
+                    <th>Data Nascimento:</th>
+                    <th>Celular:</th>
+                    <th>Telefone:</th>
+                    <th>Sexo:</th>
+                    <th>Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of profissionais ">
+                    <td>{{p.nome}}</td>
+                    <td>{{p.cpf}}</td>
+                    <td>{{p.email}}</td>
+                    <td>{{p.bairro}}</td>
+                    <td>{{p.dataNascimento}}</td>
+                    <td>{{p.celular}}</td>
+                    <td>{{p.telefone}}</td>
+                    <td>{{p.sexo}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Editar</button>
+                        &nbsp;
+                        <button class="btn btn-danger btn-sm">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        Quantidade de profissionais: 
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+ 
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<form>
+    
+    <h1>Cadastro de Serviço</h1>
+
+
+    <div *ngIf="mensagem_sucesso" class="alert alert-success">
+        Sucesso: <strong>{{mensagem_sucesso}}</strong>
+    </div>
+
+    <div *ngIf="mensagem_erro" class="alert alert-danger">
+        Erro: <strong>{{mensagem_erro}}</strong>
+    </div>
+    
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="tipoServico" class="col-sm-3 col-form-label">Tipo Servico:</label>
+            <input type="text" class="form-control" id="tipoServico" name="tipoServico"  
+                placeholder="" [(ngModel)]= "servico.tipoServico"   required="true">
+        </div>
+    </div> 
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="descricao" class="col-sm-3 col-form-label ">Descricao:</label>
+            <input type="text" [(ngModel)]= "servico.descricao" class="form-control" id="descricao" name="descricao" placeholder=""  required="true">
+        </div>
+    </div> 
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="valor" class="col-sm-3 col-form-label">Valor:</label>
+            <input type="number" [(ngModel)]= "servico.valor" class="form-control" id="valor" name="valor"  placeholder="" required="true">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="profissional" class="col-sm-3 col-form-label">profissional:</label>
+            <select type="text" [(ngModel)]="servico.profissional.idProfissional"
+             class="form-control" id="profissional" name="profissional"  placeholder="" required="true">
+             <option [value]="p.idProfissional" *ngFor="let p of profissionais">{{p.nome}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button  class="btn btn-success" (click)="salvar()">Cadastra</button>
+
+
+</form>

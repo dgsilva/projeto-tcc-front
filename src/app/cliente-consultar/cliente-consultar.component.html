@@ -1,0 +1,51 @@
+<div class="card mb-5">
+    <div class="card-body">
+ 
+        <h5 class="card-title">Consulta de Clientes</h5>
+        <p class="card-text">Listagem de clientes cadastrado.</p>
+ 
+        <hr />
+ 
+        
+ 
+        <table class="table table-hover table-striped table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nome:</th>
+                    <th>CPF:</th>
+                    <th>Email:</th>
+                    <th>Bairro:</th>
+                    <th>Data Nascimento:</th>
+                    <th>Telefone:</th>
+                    <th>Sexo:</th>
+                    <th>Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of clientes ">
+                    <td>{{c.nome }}</td>
+                    <td>{{c.cpf}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.bairro}}</td>
+                    <td>{{c.dataNascimento}}</td>
+                    <td>{{c.telefone}}</td>
+                    <td>{{c.sexo}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Editar</button>
+                        &nbsp;
+                        <button class="btn btn-danger btn-sm">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        Quantidade de clientes: 
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+ 
+    </div>
+</div>

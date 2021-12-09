@@ -1,0 +1,59 @@
+<form>
+    
+    <h1>Cadastro de Cliente</h1>
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="Nome" class="col-sm-3 col-form-label">Nome:</label>
+            <input type="text" class="form-control" name="nome"  
+                placeholder=""  [(ngModel)]="cliente.nome" required="true">
+        </div>
+    </div> 
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="CPF" class="col-sm-3 col-form-label ">CPF:</label>
+            <input type="text" class="form-control" [(ngModel)]="cliente.cpf" name="cpf" placeholder=""  required="true">
+        </div>
+    </div> 
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="email" class="col-sm-3 col-form-label">Email:</label>
+            <input type="text" class="form-control" id="email" [(ngModel)]="cliente.email" name="email"  placeholder="" required="true">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="bairro" class="col-sm-3 col-form-label">Bairro:</label>
+            <input type="text" class="form-control" id="bairro" [(ngModel)]="cliente.bairro" name="bairro"  placeholder="" required="true">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="dataNascimento" class="col-sm-3 col-form-label">Data Nascimento:</label>
+            <input type="date" class="form-control" id="dataNascimento" [(ngModel)]="cliente.dataNascimento" name="dataNascimento"  placeholder="" required="true">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="telefone" class="col-sm-3 col-form-label">Telefone:</label>
+            <input type="text" class="form-control" id="telefone" [(ngModel)]="cliente.telefone" name="telefone" placeholder="" required>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="sexo" class="col-sm-3 col-form-label">Sexo:</label>
+            <input type="text" class="form-control" id="sexo" name="sexo" [(ngModel)]="cliente.sexo" placeholder="" required="true">
+        </div>
+    </div>
+    
+
+    <button  class="btn btn-success" (click)="salvar()">Cadastra</button>
+
+
+</form>
