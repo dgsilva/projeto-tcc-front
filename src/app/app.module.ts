@@ -15,7 +15,7 @@ import { ServicoConsultarComponent } from './servico-consultar/servico-consultar
 import { AgendamentoCadastroComponent } from './agendamento-cadastro/agendamento-cadastro.component';
 import { AgendamentoEditarComponent } from './agendamento-editar/agendamento-editar.component';
 import { AgendamentoConsultarComponent } from './agendamento-consultar/agendamento-consultar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,13 +36,14 @@ import { HttpClientModule } from '@angular/common/http';
     AgendamentoEditarComponent,
     AgendamentoConsultarComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
     
   ],
   providers: [],
