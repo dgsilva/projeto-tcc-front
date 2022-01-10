@@ -1,1 +1,49 @@
-<p>agendamento-consultar works!</p>
+<div class="card mb-5">
+    <div class="card-body">
+
+        <h5 class="card-title">Consulta de Agendamento</h5>
+        <p class="card-text">Listagem de Agendamento cadastrado.</p>
+ 
+        <hr />
+
+        <table class="table table-hover table-striped table-sm">
+            <thead class="table-dark">
+            <tr>
+               <th>Cliente:</th>
+               <th>Profissional:</th>
+               <th>Serviço:</th>
+               <th>Data:</th> 
+               <th>Hora:</th> 
+               <th>Operações:</th>
+            </tr>
+            </thead>
+             
+            <tbody>
+              
+                <tr *ngFor="let a of agendamentos">
+                    
+                    <td>{{a.cliente.nome}}</td>
+                    <td>{{a.profissional.nome}}</td>
+                    <td>{{a.servico.tipoServico}}</td>
+                    <td>{{a.data | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{a.hora}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Editar</button>
+                        &nbsp;
+                        <button class="btn btn-danger btn-sm">Excluir</button>
+                    </td>
+                </tr>
+
+
+            </tbody>
+
+
+
+        </table>
+ 
+
+
+
+    </div>
+
+</div>

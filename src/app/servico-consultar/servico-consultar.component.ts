@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Servico } from 'src/model/servico';
+import { ServicoService } from '../service/servico.service';
 
 @Component({
   selector: 'app-servico-consultar',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicoConsultarComponent implements OnInit {
 
-  constructor() { }
+  servicos:Servico [] = [];
+  constructor(private servicosS:ServicoService) { }
 
   ngOnInit(): void {
+    this.obterDadosServicos();
+  }
+
+  obterDadosServicos():void{
+    this.servicosS.findAll().subscribe((data:any)=>{
+      this.servicos = data;
+    },
+    (e:any)=>{
+      console.log("Error:")
+    }
+    )
   }
 
 }

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+export const options: null | Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,9 +19,11 @@ import { AgendamentoCadastroComponent } from './agendamento-cadastro/agendamento
 import { AgendamentoEditarComponent } from './agendamento-editar/agendamento-editar.component';
 import { AgendamentoConsultarComponent } from './agendamento-consultar/agendamento-consultar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { AuthInterceptor } from './interceptors/auth-inteceptors';
+
 
 @NgModule({
   declarations: [
@@ -35,18 +40,25 @@ import { HttpClientModule } from '@angular/common/http';
     AgendamentoCadastroComponent,
     AgendamentoEditarComponent,
     AgendamentoConsultarComponent,
-    NavComponent,
     FooterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
     
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

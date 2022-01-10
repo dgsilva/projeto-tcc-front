@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Mensagem } from 'src/model/mensagem-enum';
 import { Profissional } from 'src/model/profissional';
 import { Servico } from 'src/model/servico';
 import { ProfissionalService } from '../service/profissional.service';
@@ -32,15 +33,14 @@ export class ServicoCadastroComponent implements OnInit {
   }
 
     salvar(){
-      this.servicoService.create(this.servico).subscribe((Object:any) =>{
+      this.servicoService.create(this.servico).subscribe(
+      (Object:any) =>{
       this.servico = Object;
-      this.mensagem_sucesso = Object.mensagem;
-      this.mensagem_sucesso = "Servico cadastrado com sucesso"
+      this.mensagem_sucesso = Mensagem.MENSAGEM_SUCESSO
       },
 
       (e: any)=>{
-        this.mensagem_erro = e.mensagem;
-        this.mensagem_erro = "Algo deu errado na hora de salvar"
+        this.mensagem_erro = Mensagem.MENSAGEM_ERRO
         
       }
       

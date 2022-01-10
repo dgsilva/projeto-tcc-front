@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Agendamento } from 'src/model/agendamento';
 import { Cliente } from 'src/model/cliente';
+import { Mensagem } from 'src/model/mensagem-enum';
 import { Profissional } from 'src/model/profissional';
 import { Servico } from 'src/model/servico';
 import { AgendamentoService } from '../service/agendamento.service';
@@ -18,6 +19,8 @@ agendamento:Agendamento;
 clientes:Cliente[] =[]
 profissionais:Profissional[]=[]
 servicos:Servico[]=[]
+mensagem_sucesso:string = '';
+mensagem_erro:string = '';
 
   constructor(private clienteServico:ClienteService, private profissionalService:ProfissionalService,
      private servico:ServicoService, private agendamentoService:AgendamentoService) {
@@ -51,10 +54,15 @@ servicos:Servico[]=[]
   }
 
   Salvar():void{
-    this.agendamentoService.create(this.agendamento).subscribe(object =>{
+    this.agendamentoService.create(this.agendamento).subscribe(
+      (object:any) =>{
       this.agendamento = object;
-      console.log("Cadastro realizado")
-    })
+      this.mensagem_sucesso = Mensagem.MENSAGEM_SUCESSO
+    },
+    (e:any) =>{
+     this.mensagem_erro = Mensagem.MENSAGEM_ERRO
+    }
+    )
 
   }
 }

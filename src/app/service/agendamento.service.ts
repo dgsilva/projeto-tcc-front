@@ -13,4 +13,8 @@ export class AgendamentoService {
   create(agendamento:Agendamento):Observable<Agendamento>{
     return this.http.post<Agendamento>(this.url,agendamento);
   }
+  
+  findAll():Observable<Agendamento[]>{
+    return this.http.get<Agendamento[]>(this.url);
+  }
 }
