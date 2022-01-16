@@ -18,4 +18,18 @@ export class ServicoService {
   findAll():Observable<Servico[]>{
     return this.http.get<Servico[]>(this.url);
   }
+
+  
+  retrieveById(idServico: string): Observable<Servico> { 
+    const url2 = `${this.url}/${idServico}`
+    return this.http.get<Servico>(url2);
+}
+
+
+ update(servico:Servico):Observable<Servico>{
+  const url2 = `${this.url}/${servico.idServico}`
+  return this.http.put<Servico>(url2, servico);
+ }
+
+ 
 }

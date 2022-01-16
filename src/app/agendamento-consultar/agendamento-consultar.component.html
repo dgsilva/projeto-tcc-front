@@ -28,9 +28,7 @@
                     <td>{{a.data | date: 'dd/MM/yyyy'}}</td>
                     <td>{{a.hora}}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm">Editar</button>
-                        &nbsp;
-                        <button class="btn btn-danger btn-sm">Excluir</button>
+                        <a class="btn btn-primary btn-sm" routerLink="/agendamentoedit/{{a.idAgendamento}}">Editar</a>
                     </td>
                 </tr>
 

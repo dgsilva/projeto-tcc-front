@@ -18,4 +18,15 @@ export class ProfissionalService {
   findAll():Observable<Profissional[]>{
   return this.http.get<Profissional[]>(this.url);
   }
+
+  retrieveById(idProfissional: string): Observable<Profissional> { 
+    const url2 = `${this.url}/${idProfissional}`
+    return this.http.get<Profissional>(url2);
+}
+
+
+ update(profissional:Profissional):Observable<Profissional>{
+  const url2 = `${this.url}/${profissional.idProfissional}`
+  return this.http.put<Profissional>(url2, profissional);
+ }
 }

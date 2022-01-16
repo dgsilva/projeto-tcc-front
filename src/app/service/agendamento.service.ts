@@ -17,4 +17,14 @@ export class AgendamentoService {
   findAll():Observable<Agendamento[]>{
     return this.http.get<Agendamento[]>(this.url);
   }
+
+  retrieveById(idAgendamento: string): Observable<Agendamento> { 
+    const url2 = `${this.url}/${idAgendamento}`
+    return this.http.get<Agendamento>(url2);
+}
+
+update(agendamento:Agendamento):Observable<Agendamento>{
+  const url2 = `${this.url}/${agendamento.idAgendamento}`
+  return this.http.put<Agendamento>(url2, agendamento);
+ }
 }

@@ -33,9 +33,7 @@
                     <td>{{p.telefone | mask: '(00)0000-0000'}}</td>
                     <td>{{p.sexo}}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm">Editar</button>
-                        &nbsp;
-                        <button class="btn btn-danger btn-sm">Excluir</button>
+                        <button class="btn btn-primary btn-sm" routerLink="/profissionaledit/{{p.idProfissional}}">Editar</button>
                     </td>
                 </tr>
             </tbody>

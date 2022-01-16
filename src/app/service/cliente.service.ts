@@ -17,4 +17,17 @@ export class ClienteService {
   findAll():Observable<Cliente[]>{
  return this.http.get<Cliente[]>(this.url);
   }
+
+
+  
+  retrieveById(idCliente: string): Observable<Cliente> { 
+    const url2 = `${this.url}/${idCliente}`
+    return this.http.get<Cliente>(url2);
+}
+
+
+ update(cliente:Cliente):Observable<Cliente>{
+  const url2 = `${this.url}/${cliente.idCliente}`
+  return this.http.put<Cliente>(url2, cliente);
+ }
 }
