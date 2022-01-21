@@ -1,7 +1,7 @@
-<form>
-    
+<form [formGroup]="formCadastro">
+
     <h1>Cadastro de Agendamento</h1>
-     
+
     <div *ngIf="mensagem_sucesso" class="alert alert-primary">
         Sucesso: <strong>{{mensagem_sucesso}}</strong>
     </div>
@@ -13,52 +13,96 @@
     <div class="form-group row">
         <div class="col-sm-6">
             <label for="cliente" class="col-sm-3 col-form-label">Cliente:</label>
-            <select  [(ngModel)]="agendamento.cliente.idCliente"
-             class="form-control" id="cliente" name="cliente"  placeholder="" required="true">
-             <option [value]="c.idCliente" *ngFor="let c of clientes">{{c.nome}}</option>
+            <select [(ngModel)]="agendamento.cliente.idCliente" class="form-control" id="cliente" name="cliente"
+                formControlName="cliente" placeholder="" required="true">
+                <option [value]="c.idCliente" *ngFor="let c of clientes">{{c.nome}}</option>
             </select>
+
+            <div class="text-danger" *ngIf="form.cliente.touched && form.cliente.invalid">
+
+                <div *ngIf="form.cliente.errors.required">
+                    Por favor, informe o cliente
+                </div>
+
+            </div>
         </div>
     </div>
 
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <label for="profissional" class="col-sm-3 col-form-label">profissional:</label>
-                <select [(ngModel)]="agendamento.profissional.idProfissional"
-                 class="form-control" id="profissional" name="profissional"  placeholder="" required="true">
-                 <option [value]="p.idProfissional" *ngFor="let p of profissionais">{{p.nome}}</option>
-                </select>
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="profissional" class="col-sm-3 col-form-label">profissional:</label>
+            <select [(ngModel)]="agendamento.profissional.idProfissional" class="form-control" id="profissional"
+                name="profissional" formControlName="profissional" placeholder="" required="true">
+                <option [value]="p.idProfissional" *ngFor="let p of profissionais">{{p.nome}}</option>
+            </select>
+            <div class="text-danger" *ngIf="form.profissional.touched && form.profissional.invalid">
+
+                <div *ngIf="form.profissional.errors.required">
+                    Por favor, informe o profissional
+                </div>
+
             </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="servico" class="col-sm-3 col-form-label">Servico:</label>
+            <select [(ngModel)]="agendamento.servico.idServico" class="form-control" id="servico" name="servico"
+                placeholder="" formControlName="servico" required="true">
+                <option [value]="s.idServico" *ngFor="let s of servicos">{{s.tipoServico}}</option>
+            </select>
+
+            <div class="text-danger" *ngIf="form.servico.touched && form.servico.invalid">
+
+                <div *ngIf="form.servico.errors.required">
+                    Por favor, informe o servico
+                </div>
+
             </div>
 
-            <div class="form-group row">
-                <div class="col-sm-6">
-                    <label for="servico" class="col-sm-3 col-form-label">Servico:</label>
-                    <select  [(ngModel)]="agendamento.servico.idServico"
-                     class="form-control" id="servico" name="servico"  placeholder="" required="true">
-                     <option [value]="s.idServico" *ngFor="let s of servicos">{{s.tipoServico}}</option>
-                    </select>
-                </div>
-                </div>
+        </div>
+    </div>
 
 
     <div class="form-group row">
         <div class="col-sm-6">
             <label for="data" class="col-sm-3 col-form-label">data:</label>
-            <input type="date" [(ngModel)]= "agendamento.data" class="form-control" id="data" name="data"  placeholder="" required="true">
+            <input type="date" [(ngModel)]="agendamento.data" formControlName="data" class="form-control" id="data"
+                name="data" placeholder="" required="true">
         </div>
+
+
+        <div class="text-danger" *ngIf="form.data.touched && form.data.invalid">
+
+            <div *ngIf="form.data.errors.required">
+                Por favor, informe a data
+            </div>
+
+        </div>
+
     </div>
 
 
     <div class="form-group row">
         <div class="col-sm-6">
             <label for="hora" class="col-sm-3 col-form-label">Hora:</label>
-            <input type="time" [(ngModel)]= "agendamento.hora" class="form-control" id="hora" name="hora"  placeholder="" required="true">
+            <input type="time" [(ngModel)]="agendamento.hora" formControlName="hora" class="form-control" id="hora"
+                name="hora" placeholder="" required="true">
+        </div>
+
+        <div class="text-danger" *ngIf="form.hora.touched && form.hora.invalid">
+
+            <div *ngIf="form.hora.errors.required">
+                Por favor, informe a hora
+            </div>
+
         </div>
     </div>
 
-    
 
-    <button  class="btn btn-success" (click)="Salvar()">Cadastra</button>
+
+    <button class="btn btn-success" (click)="Salvar()" [disabled]="!formCadastro.valid">Cadastra</button>
 
 
 </form>

@@ -1,10 +1,11 @@
 
  <div class="card-body">
-    <form>
+
+    <form [formGroup]="formCadastro">
         
-        <h1>Alterar o formulario do Profissional</h1>
+        <h1>Cadastro de Profissional</h1>
     
-        <div *ngIf="mensagem_sucesso" class="alert alert-primary">
+        <div *ngIf="mensagem_sucesso" class="alert alert-success">
             Sucesso: <strong>{{mensagem_sucesso}}</strong>
         </div>
     
@@ -16,7 +17,23 @@
             <div class="col-sm-6">
                 <label for="Nome" class="col-sm-3 col-form-label">Nome:</label>
                 <input type="text" class="form-control" name="nome"  
-                    placeholder="" [(ngModel)]="profissional.nome"  required="true">
+                    placeholder="" [(ngModel)]="profissional.nome" formControlName="nome" required="true">
+                    
+                    <div class="text-danger" *ngIf="form.nome.touched && form.nome.invalid">
+     
+                        <div *ngIf="form.nome.errors.required">
+                            Por favor, informe o nome do Profissional.
+                        </div>
+    
+                        <div *ngIf="form.nome.errors.minlength">
+                            Por favor, informe no mínimo 6 caracteres.
+                        </div>
+    
+                        <div *ngIf="form.nome.errors.maxlength">
+                            Por favor, informe no máximo 150 caracteres.
+                        </div>
+    
+                    </div>
             </div>
          
     
@@ -24,28 +41,86 @@
             <div class="col-sm-3">
                 <label for="CPF" class="col-sm-3 col-form-label ">CPF:</label>
                 <input type="text" class="form-control" name="cpf" [(ngModel)]="profissional.cpf"  placeholder=""
-                mask="000.000.000-00"  required="true">
+                mask="000.000.000-00" formControlName="cpf"  required="true">
+                <div class="text-danger" *ngIf="form.cpf.touched && form.cpf.invalid">
+     
+                    <div *ngIf="form.cpf.errors.required">
+                        Por favor, informe o cpf do Profissional.
+                    </div>
+    
+                    <div *ngIf="form.cpf.errors.minlength">
+                        Por favor, informe no mínimo 6 caracteres.
+                    </div>
+    
+                    <div *ngIf="form.cpf.errors.maxlength">
+                        Por favor, informe no máximo 15 caracteres.
+                    </div>
+    
+                </div>
             </div>
          
     
         
             <div class="col-sm-3">
                 <label for="email" class="col-sm-3 col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="profissional.email"   placeholder="" required="true">
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="profissional.email" 
+                formControlName="email"  placeholder="" required="true">
+                <div class="text-danger" *ngIf="form.email.touched && form.email.invalid">
+     
+                    <div *ngIf="form.email.errors.required">
+                        Por favor, informe o email do Profissional.
+                    </div>
+    
+                    <div *ngIf="form.email.errors.minlength">
+                        Por favor, informe no mínimo 6 caracteres.
+                    </div>
+    
+                    <div *ngIf="form.email.errors.maxlength">
+                        Por favor, informe no máximo 150 caracteres.
+                    </div>
+    
+                </div>
+            
             </div>
         
     
         
             <div class="col-sm-3">
                 <label for="bairro" class="col-sm-3 col-form-label">Bairro:</label>
-                <input type="text" class="form-control" id="bairro" name="bairro" [(ngModel)]="profissional.bairro"   placeholder="" required="true">
+                <input type="text" class="form-control" id="bairro" name="bairro" [(ngModel)]="profissional.bairro" formControlName="bairro"
+                placeholder="" required="true">
+    
+                <div class="text-danger" *ngIf="form.bairro.touched && form.bairro.invalid">
+     
+                    <div *ngIf="form.bairro.errors.required">
+                        Por favor, informe o bairro do Profissional.
+                    </div>
+    
+                    <div *ngIf="form.bairro.errors.minlength">
+                        Por favor, informe no mínimo 6 caracteres.
+                    </div>
+    
+                    <div *ngIf="form.bairro.errors.maxlength">
+                        Por favor, informe no máximo 150 caracteres.
+                    </div>
+    
+                </div>
+    
             </div>
         
     
       
             <div class="col-sm-3">
-                <label for="dataNascimento" class="col-sm-6 col-form-label">Data Nascimento:</label>
-                <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" [(ngModel)]="profissional.dataNascimento"  placeholder="" required="true">
+                <label for="dataNascimento" class="col-sm-6 col-form-label">Dt.Nascimento:</label>
+                <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" [(ngModel)]="profissional.dataNascimento"
+                formControlName="DtNascimento" placeholder="" required="true">
+                <div class="text-danger" *ngIf="form.DtNascimento.touched && form.DtNascimento.invalid">
+    
+                    <div *ngIf="form.DtNascimento.errors.minlength">
+                        Por favor, informe no mínimo 6 caracteres.
+                    </div>
+                </div>
+    
             </div>
         
     
@@ -53,7 +128,24 @@
             <div class="col-sm-3">
                 <label for="celular" class="col-sm-6 col-form-label">Celular:</label>
                 <input type="text" class="form-control" id="celular" name="celular" [(ngModel)]="profissional.celular"
-                mask="(00)00000-0000" placeholder="" required>
+                mask="(00)00000-0000" formControlName="celular" placeholder="" required>
+    
+                <div class="text-danger" *ngIf="form.telefone.touched && form.telefone.invalid">
+     
+                    <div *ngIf="form.celular.errors.required">
+                        Por favor, informe o celular do Profissional.
+                    </div>
+    
+                    <div *ngIf="form.celular.errors.minlength">
+                        Por favor, informe no mínimo 2 caracteres.
+                    </div>
+    
+                    <div *ngIf="form.celular.errors.maxlength">
+                        Por favor, informe no máximo 15 caracteres.
+                    </div>
+    
+                </div>
+    
             </div>
         
     
@@ -61,19 +153,51 @@
             <div class="col-sm-3">
                 <label for="telefone" class="col-sm-3 col-form-label">Telefone:</label>
                 <input type="text" class="form-control" id="telefone" name="telefone" [(ngModel)]="profissional.telefone"
-                mask="(00)0000-0000" placeholder="" required>
+                mask="(00)0000-0000" placeholder="" formControlName="telefone" required>
+    
+                <div class="text-danger" *ngIf="form.telefone.touched && form.telefone.invalid">
+     
+                    <div *ngIf="form.telefone.errors.required">
+                        Por favor, informe o telefone do Profissional.
+                    </div>
+    
+                    <div *ngIf="form.telefone.errors.minlength">
+                        Por favor, informe no mínimo 2 caracteres.
+                    </div>
+    
+                    <div *ngIf="form.telefone.errors.maxlength">
+                        Por favor, informe no máximo 15 caracteres.
+                    </div>
+    
+                </div>
             </div>
      
     
         
             <div class="col-sm-3">
                 <label for="sexo" class="col-sm-3 col-form-label">Sexo:</label>
-                <input type="text" class="form-control" id="sexo" name="sexo" placeholder="" [(ngModel)]="profissional.sexo" required="true">
+                <input type="text" class="form-control" id="sexo" name="sexo" placeholder="" formControlName="sexo" [(ngModel)]="profissional.sexo"
+                 required="true">
+                 <div class="text-danger" *ngIf="form.sexo.touched && form.sexo.invalid">
+     
+                    <div *ngIf="form.sexo.errors.required">
+                        Por favor, informe o sexo do cliente.
+                    </div>
+    
+                    <div *ngIf="form.sexo.errors.minlength">
+                        Por favor, informe no mínimo 2 caracteres.
+                    </div>
+    
+                    <div *ngIf="form.sexo.errors.maxlength">
+                        Por favor, informe no máximo 6 caracteres.
+                    </div>
+    
+                </div>
             </div>
         </div>
         
     
-        <button  class="btn btn-primary" (click)="editar()">Editar</button>
+        <button  class="btn btn-success" (click)="editar()" [disabled]="!formCadastro.valid">Cadastra</button>
     
     
     </form>

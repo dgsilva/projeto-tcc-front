@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Mensagem } from 'src/model/mensagem-enum';
 import { Profissional } from 'src/model/profissional';
 import { Servico } from 'src/model/servico';
@@ -21,6 +22,34 @@ export class ServicoCadastroComponent implements OnInit {
   constructor(private servicoService:ServicoService, private profissionalServico:ProfissionalService) { 
     this.servico = new Servico();
   }
+
+  formCadastro = new FormGroup({
+    tipoServico:new FormControl('',[
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(150)
+    ]),
+    descricao: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(150)
+    ]),
+
+    valor: new FormControl('',[
+      Validators.required
+    ]),
+    
+    profissional: new FormControl('',[
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(150)
+    ])
+  })
+
+  get form(): any {
+    return this.formCadastro.controls;
+  }
+
 
   ngOnInit(): void {
     this.ListarProfissional();

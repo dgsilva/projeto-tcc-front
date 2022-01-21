@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Agendamento } from 'src/model/agendamento';
 import { Cliente } from 'src/model/cliente';
 import { Mensagem } from 'src/model/mensagem-enum';
@@ -26,6 +27,34 @@ mensagem_erro:string = '';
      private servico:ServicoService, private agendamentoService:AgendamentoService) {
     this.agendamento = new Agendamento();
    }
+
+  formCadastro = new FormGroup({
+   cliente: new FormControl('',[
+    Validators.required
+   ]),
+
+   profissional: new FormControl('',[
+    Validators.required
+   ]),
+
+   servico: new FormControl('',[
+    Validators.required
+   ]),
+
+   data: new FormControl('',[
+    Validators.required
+
+   ]),
+
+   hora: new FormControl('',[
+    Validators.required
+   ])
+  
+  })
+
+  get form(): any {
+    return this.formCadastro.controls;
+  }
 
   ngOnInit(): void {
     this.CarregarCliente();

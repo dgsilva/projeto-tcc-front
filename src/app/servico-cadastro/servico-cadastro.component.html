@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="formCadastro">
 
     <h1>Cadastro de Serviço</h1>
 
@@ -15,39 +15,84 @@
     <div class="form-group row">
         <div class="col-sm-6">
             <label for="tipoServico" class="col-sm-3 col-form-label">Tipo Servico:</label>
-            <input type="text" class="form-control" id="tipoServico" name="tipoServico" placeholder=""
+            <input type="text" class="form-control" id="tipoServico" formControlName="tipoServico" name="tipoServico" placeholder=""
                 [(ngModel)]="servico.tipoServico" required="true">
+                <div class="text-danger" *ngIf="form.tipoServico.touched && form.tipoServico.invalid">
+ 
+                    <div *ngIf="form.tipoServico.errors.required">
+                        Por favor, informe o tipo do serviço.
+                    </div>
+
+                    <div *ngIf="form.tipoServico.errors.minlength">
+                        Por favor, informe no mínimo 6 caracteres.
+                    </div>
+
+                    <div *ngIf="form.tipoServico.errors.maxlength">
+                        Por favor, informe no máximo 150 caracteres.
+                    </div>
+
+                </div>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="col-sm-6">
             <label for="descricao" class="col-sm-3 col-form-label ">Descricao:</label>
-            <input type="text" [(ngModel)]="servico.descricao" class="form-control" id="descricao" name="descricao"
+            <input type="text" [(ngModel)]="servico.descricao" formControlName="descricao" class="form-control" id="descricao" name="descricao"
                 placeholder="" required="true">
+                <div class="text-danger" *ngIf="form.descricao.touched && form.descricao.invalid">
+ 
+                    <div *ngIf="form.descricao.errors.required">
+                        Por favor, informe a descrição
+                    </div>
+
+                    <div *ngIf="form.descricao.errors.minlength">
+                        Por favor, informe no mínimo 6 caracteres.
+                    </div>
+
+                    <div *ngIf="form.descricao.errors.maxlength">
+                        Por favor, informe no máximo 150 caracteres.
+                    </div>
+
+                </div>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="col-sm-6">
             <label for="valor" class="col-sm-3 col-form-label">Valor:</label>
-            <input type="number" [(ngModel)]="servico.valor" class="form-control" id="valor" name="valor"
+            <input type="number" [(ngModel)]="servico.valor" formControlName="valor" class="form-control" id="valor" name="valor"
                 placeholder="R$10,00" required="true">
+                <div class="text-danger" *ngIf="form.valor.touched && form.valor.invalid">
+ 
+                    <div *ngIf="form.valor.errors.required">
+                        Por favor, informe a valor
+                    </div>
+
+                </div>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="col-sm-6">
             <label for="profissional" class="col-sm-3 col-form-label">Profissional:</label>
-            <select [(ngModel)]="servico.profissional.idProfissional" class="form-control" id="profissional"
+            <select [(ngModel)]="servico.profissional.idProfissional" formControlName="profissional" class="form-control" id="profissional"
                 name="profissional" placeholder="Selecione" >
                 <option [value]="">Selecione</option>
                 <option [value]="p.idProfissional" *ngFor="let p of profissionais">{{p.nome}} - {{p.cpf}}</option>
             </select>
+
+            <div class="text-danger" *ngIf="form.profissional.touched && form.profissional.invalid">
+ 
+                <div *ngIf="form.profissional.errors.required">
+                    Por favor, informe a descrição
+                </div>
+
+            </div>
         </div>
     </div>
 
-    <button class="btn btn-success" (click)="salvar()">Cadastra</button>
+    <button class="btn btn-success" (click)="salvar()" [disabled]="!formCadastro.valid">Cadastra</button>
 
 
 </form>

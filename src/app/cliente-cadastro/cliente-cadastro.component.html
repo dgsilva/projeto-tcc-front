@@ -115,10 +115,12 @@
            
             <div class="text-danger" *ngIf="form.DtNascimento.touched && form.DtNascimento.invalid">
 
-                <div *ngIf="form.DtNascimento.errors.minlength">
-                    Por favor, informe no mínimo 6 caracteres.
+                <div *ngIf="form.DtNascimento.errors.required">
+                    Por favor, informe a Data de Nascimento
                 </div>
+    
             </div>
+
         </div>
     </div>
 

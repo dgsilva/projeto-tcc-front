@@ -8,6 +8,7 @@ import { ProfissionalService } from '../service/profissional.service';
   styleUrls: ['./profissional-consultar.component.css']
 })
 export class ProfissionalConsultarComponent implements OnInit {
+  
  profissionais:Profissional [] = [];
   
  constructor(private profissionaisServico: ProfissionalService) { }

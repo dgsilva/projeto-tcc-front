@@ -48,7 +48,7 @@ cliente:Cliente;
    ]),
    
    DtNascimento: new FormControl('',[
-     Validators.minLength(2),
+     Validators.required
    ]),
 
    telefone: new FormControl('',[
